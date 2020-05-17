@@ -93,10 +93,10 @@ class Lescript
         $this->log("Requesting challenge for ".join(', ', $domains));
         $response = $this->signedRequest(
             $this->urlNewOrder,
-            array("identifiers" => array_map(
+            array("identifiers" => array_values(array_map(
                 function ($domain) { return array("type" => "dns", "value" => $domain);}, 
                 $domains
-                ))
+                )))
         );
 
         $finalizeUrl = $response['finalize'];
